@@ -1,1 +1,362 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080810">
+<title>RAVANAN | Official Website</title>
+<meta name="description"
+content="Welcome to RAVANAN's official website. Connect with me on Instagram, YouTube, Discord and Steam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --purple: #a855f7;
+    --pink: #ec4899;
+    --white: #ffffff;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #080810;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+/* BACKGROUND */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 5, 15, 0.35),
+            rgba(5, 5, 15, 0.88)
+        ),
+        url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=2000&q=90")
+        center / cover no-repeat;
+}
+.background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(147, 51, 234, 0.15),
+        transparent 65%
+    );
+}
+/* NAVBAR */
+nav {
+    width: 100%;
+    padding: 24px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: white;
+    text-decoration: none;
+}
+.logo span {
+    color: var(--purple);
+}
+.status {
+    font-size: 12px;
+    color: #d4d4d8;
+    letter-spacing: 1px;
+}
+.status i {
+    color: #22c55e;
+    margin-right: 7px;
+}
+/* MAIN CONTENT */
+main {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 20px 80px;
+}
+.container {
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+    animation: appear 1s ease;
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* PROFILE */
+.avatar {
+    width: 115px;
+    height: 115px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--pink),
+        #6366f1
+    );
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.3);
+}
+.avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #171321;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+}
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(35px, 8vw, 65px);
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 30px rgba(168, 85, 247, 0.35);
+}
+h1 span {
+    background: linear-gradient(
+        90deg,
+        #c084fc,
+        #f0abfc,
+        #ec4899
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.subtitle {
+    color: #d4d4d8;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.description {
+    max-width: 500px;
+    margin: 0 auto 35px;
+    color: #a1a1aa;
+    font-size: 14px;
+    line-height: 1.9;
+}
+/* SOCIAL LINKS */
+.section-title {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #a1a1aa;
+    margin-bottom: 18px;
+}
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 13px;
+    margin-bottom: 38px;
+}
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 20px;
+    min-width: 135px;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(15, 15, 30, 0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+.social-link i {
+    font-size: 19px;
+}
+.social-link:hover {
+    transform: translateY(-5px);
+    border-color: var(--purple);
+    background: rgba(168, 85, 247, 0.15);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.15);
+}
+/* CONTACT BUTTON */
+.contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 27px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    background: linear-gradient(
+        100deg,
+        #7c3aed,
+        #c026d3
+    );
+    box-shadow: 0 5px 25px rgba(168, 85, 247, 0.25);
+    transition: 0.3s;
+}
+.contact:hover {
+    transform: scale(1.04);
+    box-shadow: 0 5px 35px rgba(168, 85, 247, 0.45);
+}
+/* FOOTER */
+footer {
+    padding: 25px 15px;
+    text-align: center;
+    font-size: 11px;
+    color: #71717a;
+    letter-spacing: 1px;
+}
+footer span {
+    color: #c084fc;
+}
+/* MOBILE RESPONSIVE */
+@media (max-width: 500px) {
+    nav {
+        padding: 22px 6%;
+    }
+    .logo {
+        font-size: 18px;
+    }
+    .status {
+        font-size: 10px;
+    }
+    main {
+        padding-top: 35px;
+    }
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+    .socials {
+        gap: 10px;
+    }
+    .social-link {
+        min-width: 42%;
+        padding: 13px 10px;
+    }
+    h1 {
+        letter-spacing: 3px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="background"></div>
+<!-- NAVIGATION -->
+<nav>
+    <a href="#" class="logo">
+        RAVANAN<span>.</span>
+    </a>
+    <div class="status">
+        <i class="fa-solid fa-circle"></i>
+        ONLINE
+    </div>
+</nav>
+<!-- MAIN WEBSITE -->
+<main>
+<div class="container">
+    <!-- PROFILE ICON -->
+    <div class="avatar">
+        <div class="avatar-inner">R</div>
+    </div>
+    <!-- NAME -->
+    <h1>RAVA<span>NAN</span></h1>
+    <p class="subtitle">
+        Gamer · Creator · Individual
+    </p>
+    <p class="description">
+        Welcome to my digital space.
+        Gaming, creativity and good vibes.
+        Connect with me across my favourite platforms.
+    </p>
+    <!-- SOCIAL MEDIA -->
+    <p class="section-title">
+        GET IN TOUCH
+    </p>
+    <div class="socials">
+        <!-- INSTAGRAM -->
+        <a
+        href="https://www.instagram.com/____.ravanan___?vrfl=MWJ4ZzB0bnFmcTJ5Zw%3D%3D&utm_source=qr"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram"></i>
+            Instagram
+        </a>
+        <!-- YOUTUBE -->
+        <a
+        href="https://www.youtube.com/@Ravanan-x7"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer">
+            <i class="fa-brands fa-youtube"></i>
+            YouTube
+        </a>
+        <!-- DISCORD SERVER -->
+        <a
+        href="https://discord.gg/TKXYndR4H6"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer">
+            <i class="fa-brands fa-discord"></i>
+            Discord
+        </a>
+        <!-- STEAM -->
+        <a
+        href="https://steamcommunity.com/id/ravanan_x7/"
+        class="social-link"
+        target="_blank"
+        rel="noopener noreferrer">
+            <i class="fa-brands fa-steam"></i>
+            Steam
+        </a>
+    </div>
+    <!-- CONTACT -->
+    <a
+    href="https://discord.gg/TKXYndR4H6"
+    class="contact"
+    target="_blank"
+    rel="noopener noreferrer">
+        <i class="fa-solid fa-paper-plane"></i>
+        JOIN MY DISCORD
+    </a>
+</div>
+</main>
+<!-- FOOTER -->
+<footer>
+    © 2026 <span>RAVANAN</span>
+    · MADE WITH PASSION
+</footer>
+</body>
+</html>
