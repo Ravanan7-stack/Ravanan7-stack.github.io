@@ -1,1 +1,413 @@
 
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravanan.com | Welcome To My World</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Caveat for handwritten cursive -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        cursive: ['"Caveat"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#a855f7',
+                            brightPurple: '#c084fc',
+                            darkBg: '#090712',
+                            glowPurple: '#9333ea',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #080612;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Fullscreen Background Image */
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            background-image: url('image_2.png'); /* Replace with your background image filename or local path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Overlay to enhance text readability while maintaining artwork aesthetics */
+        .hero-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            background: 
+                radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(15, 10, 30, 0.65) 0%, transparent 60%),
+                linear-gradient(to bottom, rgba(8, 6, 18, 0.4) 0%, rgba(8, 6, 18, 0.65) 50%, rgba(8, 6, 18, 0.85) 100%);
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-card {
+            background: rgba(15, 12, 29, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        /* Outer Glow Get in Touch Main Glass Card */
+        .glass-card-glow {
+            background: rgba(16, 12, 32, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            box-shadow: 0 0 40px -5px rgba(147, 51, 234, 0.35), inset 0 0 20px rgba(168, 85, 247, 0.12);
+        }
+
+        /* Platform Interactive Boxes */
+        .platform-box {
+            background: rgba(22, 17, 43, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .platform-box:hover {
+            border-color: rgba(168, 85, 247, 0.6);
+            background: rgba(30, 24, 58, 0.88);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.35);
+        }
+
+        .platform-box:hover .arrow-icon {
+            transform: translateX(4px);
+            color: #c084fc;
+        }
+
+        /* Purple Gradient Text Accent */
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #f3e8ff 0%, #c084fc 45%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glowing Primary Button */
+        .btn-glow {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Corner glowing accent lines for Get in Touch card */
+        .card-ambient-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 1.5rem;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 95% 5%, rgba(168, 85, 247, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 5% 95%, rgba(99, 102, 241, 0.2) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-purple-500 selection:text-white">
+
+    <!-- FIXED ARTWORK BACKGROUND -->
+    <div class="hero-bg" onerror="this.style.backgroundImage='url(\'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80\')'"></div>
+    <div class="hero-overlay"></div>
+
+    <!-- PAGE CONTAINER -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+
+        <!-- HEADER / NAVIGATION -->
+        <header class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-2 group">
+                <span class="text-xl font-bold tracking-tight text-white">Ravanan<span class="text-purple-400">.com</span></span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="text-white border-b-2 border-purple-500 pb-1">Home</a>
+                <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+                <a href="#about" class="hover:text-purple-400 transition-colors">Projects</a>
+                <a href="#about" class="hover:text-purple-400 transition-colors">Interests</a>
+                <a href="#contact" class="hover:text-purple-400 transition-colors">Get in Touch</a>
+            </nav>
+
+            <!-- Dark Mode Toggle Button -->
+            <div class="flex items-center gap-4">
+                <button aria-label="Toggle theme" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-purple-300 hover:border-purple-500/50 transition-all">
+                    <i class="fa-regular fa-moon text-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-grow w-full max-w-7xl mx-auto px-6 pt-4 pb-16 flex flex-col justify-center">
+
+            <!-- HERO INTRO SECTION -->
+            <section id="home" class="mb-14 pt-2">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-xs font-bold tracking-widest text-slate-400 uppercase">WELCOME TO MY WORLD</span>
+                    <div class="h-[1px] w-24 bg-gradient-to-r from-purple-500/50 to-transparent"></div>
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-none mb-6">
+                    Hey, I'm <br class="sm:hidden" />
+                    <span class="text-gradient-purple">Ravanan.</span>
+                </h1>
+
+                <!-- Short Bio without age -->
+                <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed mb-8 drop-shadow-sm">
+                    A <span class="font-semibold text-white">creator, gamer</span>, tech enthusiast and dreamer. Exploring technology, games and building a better future. Welcome to my corner! 🌟
+                </p>
+
+                <!-- Hero CTA Buttons -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="#contact" class="btn-glow px-7 py-3.5 rounded-2xl text-white font-semibold text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                        <span>Get in Touch</span>
+                    </a>
+                    <a href="#about" class="glass-card px-7 py-3.5 rounded-2xl text-slate-200 font-semibold text-sm hover:border-purple-500/50 hover:bg-slate-800/50 transition-all flex items-center gap-2">
+                        <span>About Me</span>
+                        <i class="fa-solid fa-arrow-down text-xs text-slate-400"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- TWO COLUMN SECTION: ABOUT ME & GET IN TOUCH -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-2">
+
+                <!-- LEFT COLUMN: ABOUT ME -->
+                <section id="about" class="lg:col-span-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-xs font-bold tracking-widest text-slate-400 uppercase">ABOUT ME</span>
+                            <div class="h-[1px] w-20 bg-gradient-to-r from-purple-500/50 to-transparent"></div>
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight mb-6">
+                            Just a guy who loves <br />
+                            <span class="text-gradient-purple">tech, games</span> and good vibes.
+                        </h2>
+
+                        <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed mb-8 drop-shadow-sm">
+                            <p>
+                                I spend my time playing games like <strong class="text-white font-semibold">CPM2, BGMI, Free Fire</strong>, exploring PC builds, learning new things, and enjoying the world of technology.
+                            </p>
+                            <p>
+                                Always trying to level up in life. 🚀
+                            </p>
+                        </div>
+
+                        <!-- 3 GLASS CARDS -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+                            <!-- Card 1 -->
+                            <div class="glass-card p-4 rounded-2xl flex items-center gap-3 border border-purple-500/10">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-300">
+                                    <i class="fa-solid fa-gamepad text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Gamer</div>
+                                    <div class="text-[11px] text-slate-400">At Heart</div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="glass-card p-4 rounded-2xl flex items-center gap-3 border border-purple-500/10">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-300">
+                                    <i class="fa-solid fa-laptop text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Tech</div>
+                                    <div class="text-[11px] text-slate-400">Enthusiast</div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="glass-card p-4 rounded-2xl flex items-center gap-3 border border-purple-500/10">
+                                <div class="w-10 h-10 rounded-xl bg-fuchsia-500/20 flex items-center justify-center text-fuchsia-300">
+                                    <i class="fa-solid fa-chart-line text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-white">Always</div>
+                                    <div class="text-[11px] text-slate-400">Learning</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HANDWRITTEN SLOGAN -->
+                    <div class="pt-4 mb-6 lg:mb-0">
+                        <span class="font-cursive text-3xl sm:text-4xl text-purple-300 opacity-95 tracking-wide select-none drop-shadow">
+                            Dream Big, Play Hard. ♡
+                        </span>
+                    </div>
+                </section>
+
+                <!-- RIGHT COLUMN: GET IN TOUCH BOX -->
+                <section id="contact" class="lg:col-span-6 scroll-mt-6">
+                    <div class="glass-card-glow p-6 sm:p-8 rounded-3xl relative overflow-hidden h-full flex flex-col justify-between">
+                        <div class="card-ambient-glow"></div>
+
+                        <div class="relative z-10">
+                            <!-- Card Header -->
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center">
+                                    <i class="fa-solid fa-paper-plane text-lg"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">Get in Touch</h3>
+                            </div>
+                            <p class="text-slate-400 text-xs sm:text-sm mb-6 pl-1">
+                                Let's connect! Feel free to reach out on any platform.
+                            </p>
+
+                            <!-- PLATFORMS GRID (ONLY Instagram, YouTube, Discord, Steam) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+
+                                <!-- INSTAGRAM -->
+                                <a href="https://www.instagram.com/____.ravanan___?vrfl=MWJ4ZzB0bnFmcTJ5Zw%3D%3D&utm_source=qr" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer" 
+                                   class="platform-box p-4 rounded-2xl flex items-center justify-between group">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white shadow-md shadow-rose-500/20 shrink-0">
+                                            <i class="fa-brands fa-instagram text-2xl"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">Instagram</div>
+                                            <div class="text-[11px] text-slate-400 leading-tight mt-0.5">Follow me for updates and more!</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs text-slate-500 arrow-icon transition-all ml-2"></i>
+                                </a>
+
+                                <!-- YOUTUBE -->
+                                <a href="https://www.youtube.com/@Ravanan-x7" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer" 
+                                   class="platform-box p-4 rounded-2xl flex items-center justify-between group">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="w-12 h-12 rounded-2xl bg-red-600 flex items-center justify-center text-white shadow-md shadow-red-600/20 shrink-0">
+                                            <i class="fa-brands fa-youtube text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">YouTube</div>
+                                            <div class="text-[11px] text-slate-400 leading-tight mt-0.5">Watch my content!</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs text-slate-500 arrow-icon transition-all ml-2"></i>
+                                </a>
+
+                                <!-- DISCORD -->
+                                <a href="https://discord.gg/TKXYndR4H6" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer" 
+                                   class="platform-box p-4 rounded-2xl flex items-center justify-between group">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-600/20 shrink-0">
+                                            <i class="fa-brands fa-discord text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">Discord</div>
+                                            <div class="text-[11px] text-slate-400 leading-tight mt-0.5">Join my server!</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs text-slate-500 arrow-icon transition-all ml-2"></i>
+                                </a>
+
+                                <!-- STEAM -->
+                                <a href="https://steamcommunity.com/id/ravanan_x7/" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer" 
+                                   class="platform-box p-4 rounded-2xl flex items-center justify-between group">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-sky-400 shadow-md shadow-sky-900/20 shrink-0">
+                                            <i class="fa-brands fa-steam text-2xl"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">Steam</div>
+                                            <div class="text-[11px] text-slate-400 leading-tight mt-0.5">Add me on Steam!</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-right text-xs text-slate-500 arrow-icon transition-all ml-2"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <!-- CLEAN, UNGLITCHED EMAIL LINE AT BOTTOM -->
+                        <div class="relative z-10 pt-4 border-t border-purple-500/15 flex flex-wrap items-center justify-center text-xs text-slate-300 gap-2">
+                            <i class="fa-regular fa-envelope text-purple-400 text-sm"></i>
+                            <span class="text-slate-400">Or just send me an email</span>
+                            <span class="text-slate-500">•</span>
+                            <a href="mailto:ravanan7628@gmail.com" class="text-purple-300 hover:text-purple-200 transition-colors underline font-medium">
+                                ravanan7628@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="w-full max-w-7xl mx-auto px-6 py-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <div>
+                © 2025 <span class="text-slate-300 font-semibold">Ravanan.com</span> • All rights reserved.
+            </div>
+
+            <div class="flex items-center gap-1">
+                Built with passion <span class="text-red-500">❤️</span>
+            </div>
+        </footer>
+
+        <!-- BACK TO TOP BUTTON -->
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                aria-label="Back to top" 
+                class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full glass-card border border-purple-500/30 flex items-center justify-center text-slate-300 hover:text-white hover:border-purple-500 transition-all shadow-xl">
+            <i class="fa-solid fa-arrow-up text-xs"></i>
+        </button>
+
+    </div>
+
+</body>
+</html>
